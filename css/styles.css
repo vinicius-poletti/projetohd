@@ -1,21 +1,73 @@
+@font-face {
+    font-family: Quickssand-light;
+    src: url(../fonts/Quicksand-Light.ttf);
+}
+
 *{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root{
     --height-full: 100vh;
+    --color-light: #f4f4f4;
+    --color-dark: #222222;
+    --color-orange: #ff6600;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
 }
 
 html {
     scroll-behavior: smooth;
+    font-family: Quickssand-light;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+a {
+    color:var(--color-light);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    color: var(--color-orange);
 }
 
 .hero {
-    background-image: url(../images/motos/banner.jpg);
+    color: var(--color-light);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 0, .4)),
+    url(../images/motos/banner.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: var(--height-full);
+}
+
+.header-hero{
+    height: 100px;
+    padding-inline: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-hero-list {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.cta {
+    height: calc(100vh - 100px); /*ele faz o calculo*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
 }
 
 .box{

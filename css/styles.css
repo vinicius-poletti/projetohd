@@ -14,6 +14,7 @@
     --color-light: #f4f4f4;
     --color-dark: #111111;
     --color-orange: #ff6600;
+    --color-orange-alpha: rgba(255, 102, 0, 0.4);
     --spacing-sm: 10px;
     --spacing-md: 20px;
     --spacing-lg: 30px;
@@ -88,12 +89,16 @@ a:hover {
     border: 2px solid var(--color-orange);
     padding: var(--spacing-sm) var(--spacing-lg);
     border-radius: 80px;
-    background-color: var(--color-orange);
+    background-color: var(--color-orange-alpha);
     transition: background-color .5s;
 }
 
 .btn:hover {
     background-color: transparent;
+}
+
+.icon {
+    animation: motinha 1.5s infinite linear;
 }
 
 .box{
@@ -119,20 +124,79 @@ a:hover {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm); /*Espaçamento entre os elementos */
+    flex-wrap: wrap;
 }
 
 .grid-motos-item {
     width: 30%;
-    border: 1px solid var(--color-light);
+    box-shadow: inset 1px 1px 10px var(--color-orange-alpha);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     color: var(--color-light);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    text-align: center;
+    transition: .5s;
+    margin: var(--spacing-sm);
+    /* filter: grayscale(1); */
+    animation: viewAnimation both;
+    animation-timeline: view(70% 20%);
+}
+
+.grid-motos-item:hover{
+    scale: 1.05;
+    /* filter: grayscale(0); */
 }
 
 .grid-motos-item img{
     width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    object-fit: fill;
 }
 
+.grid-motos-item p{
+    width: 85%;
+    text-wrap: balance;
+}
+
+/* pequena animação */
+@keyframes motinha {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+
+}
+
+@keyframes viewAnimation {
+    
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+/* pensando no meio responsivo */
+@media(width <= 900px){
+    .grid-motos-item {
+        width: 45%;
+    }
+}
+
+@media(width <= 600px){
+    .grid-motos-item {
+        width: 90%;
+    }
+}
